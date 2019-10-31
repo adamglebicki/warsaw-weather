@@ -9,10 +9,13 @@ const H1 = styled.h1`
     font-size: 50px;
   }
 
+  @media (max-width: 414px) {
+    font-size: 30px;
+  }
+    
   @media (max-width: 320px) {
     font-size: 25px;
   }
-  
 `
 
 const H2 = styled.h2`
@@ -21,6 +24,10 @@ const H2 = styled.h2`
 
   @media (max-width: 768px) {
     font-size: 25px;
+  }
+
+  @media (max-width: 414px) {
+    font-size: 20px;
   }
 
   @media (max-width: 320px) {
