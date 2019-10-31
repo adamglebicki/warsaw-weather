@@ -6,7 +6,7 @@ const Weather = ({ city, country, temp, humidity, description, error }) => {
         { city && country && <p>City: {city}, {country}</p> }
         { temp && <p>Temperature: {temp} C</p> }
         { humidity && <p>Humidity: {humidity}%</p> }
-        { description && <p>Description: {description}</p> }
+        { description && <p>{description.toUpperCase()}</p> }
         { error && <p> {error}</p> }
       </>
     )
