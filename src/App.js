@@ -48,6 +48,7 @@ const API_key = '186dd8517f76b40531cc4c7e9a5a4d33'
 
 export default class App extends Component {
   state = {
+    icon: undefined,
     temp: undefined,
     city: undefined,
     country: undefined,
@@ -62,7 +63,9 @@ export default class App extends Component {
     const warsaw_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=warsaw,pl&appid=${API_key}&units=metric`)
     const warsaw_response = await warsaw_call.json()
 
-    this.setState({ 
+    this.setState({
+      id: warsaw_response.weather[0].id,
+      icon: warsaw_response.weather[0].icon,
       temp: warsaw_response.main.temp,
       city: warsaw_response.name,
       country: warsaw_response.sys.country,
@@ -83,6 +86,8 @@ export default class App extends Component {
     if (city && country) {
 
       this.setState({ 
+        id: response.weather[0].id,
+        icon: response.weather[0].icon,
         temp: response.main.temp,
         city: response.name,
         country: response.sys.country,
@@ -92,6 +97,8 @@ export default class App extends Component {
        })
     } else {
       this.setState({ 
+        id: undefined,
+        icon: undefined,
         temp: undefined,
         city: undefined,
         country: undefined,
@@ -111,6 +118,7 @@ export default class App extends Component {
           <WarsawButton showWarsaw={this.showWarsaw}/>
           <ActionButton />
           <Weather 
+            icon={this.state.icon}
             temp={this.state.temp}
             city={this.state.city}
             country={this.state.country}
@@ -124,6 +132,7 @@ export default class App extends Component {
           <Form showWeather={this.showWeather}/>
           <Index />
           <Weather 
+            icon={this.state.icon}
             temp={this.state.temp}
             city={this.state.city}
             country={this.state.country}
